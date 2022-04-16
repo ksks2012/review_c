@@ -1,10 +1,14 @@
 CFLAGS = -pg
 
 LIB = $(wildcard lib/*.c)
-all: 3.out 4.out
+all: 3.out 4.out 5.out
+
+5.out: 5.c $(LIB:%.c=%.o)
+	gcc -o $@ $(CFLAGS) $^
 
 4.out: 4.c $(LIB:%.c=%.o)
 	gcc -o $@ $(CFLAGS) $^
+
 3.out: 3.c $(LIB:%.c=%.o)
 	gcc -o $@ $(CFLAGS) $^
 
