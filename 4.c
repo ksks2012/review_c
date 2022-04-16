@@ -11,13 +11,10 @@ void ReplaceBlank(char* string, int length) {
 		if(string[i] == ' ')
 			count++;
 	}
-	printf("%d\n", count);
 	int new_len = length + count * 2;
 	int cur_length = length;
 	while (cur_length >= 0 && new_len > cur_length)
 	{
-		printf("%d %d\n", new_len, cur_length);
-		printf("%c %d\n", string[cur_length], string[new_len]);
 		if(string[cur_length] == ' ') {
 			string[new_len--] = '0';
 			string[new_len--] = '2';
