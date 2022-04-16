@@ -4,11 +4,6 @@
 #include "list_node.h"
 #include "assert.h"
 
-typedef enum bool {
-	false,
-	true
-} bool;
-
 typedef struct Queue {
 	ListNode *begin;
 	ListNode *end;

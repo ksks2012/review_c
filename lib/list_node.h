@@ -1,6 +1,11 @@
 #ifndef __LIST_NODE_H__
 #define __LIST_NODE_H__
 
+typedef enum bool {
+	false,
+	true
+} bool;
+
 typedef struct ListNode
 {
 	/* data */

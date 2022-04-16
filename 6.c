@@ -53,4 +53,7 @@ int main() {
 	print_inorder_tree(tree);
 	printf("\n");
 	print_postorder_tree(tree);
+	printf("\n");
+	BFS(tree);
+	DFS(tree);
 }

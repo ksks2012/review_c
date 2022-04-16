@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "binary_tree.h"
 #include "queue.h"
+#include "stack.h"
 
 void print_preorder_tree(BinaryTreeNode *root) {
 	if(root == NULL)
@@ -37,19 +38,32 @@ void BFS(BinaryTreeNode *root) {
 	while(!queue_is_empty(q)) {
 		int size = q->size;
 		for(int i = 0; i < size; i++) {
-			BinaryTreeNode *top = queue_dequeue(q);
-			printf("%d, ", (int *)(top->value));
-			if(top->left != NULL)
-				queue_enqueue(q, top->left);
-			if(top->right != NULL)
-				queue_enqueue(q, top->right);
+			BinaryTreeNode *front = queue_dequeue(q);
+			printf("%d, ", (int *)(front->value));
+			if(front->left != NULL)
+				queue_enqueue(q, front->left);
+			if(front->right != NULL)
+				queue_enqueue(q, front->right);
 		}
 	}
+	printf("\n");
 	queue_delete(q);
 }
 
-// TODO: stack
 void DFS(BinaryTreeNode *root) {
 	if(root == NULL)
 		return;
+	Stack *s = stack_new();
+
+	stack_push(s, root);
+	while(!stack_is_empty(s)) {
+		BinaryTreeNode *top = stack_pop(s);
+		if(top->right != NULL)
+			stack_push(s, top->right);
+		if(top->left != NULL)
+			stack_push(s, top->left);
+		printf("%d, ", (int *)(top->value));
+	}
+	printf("\n");
+	stack_delete(s);
 }
