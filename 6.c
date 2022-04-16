@@ -1,36 +1,36 @@
 #include "./lib/cheader.h"
 
 
-BinaryTreeNode* ConstructCore(int *preorderStart, int *preorderEnd, int *inorderStart, int *inorderEnd) {
-	int root_value = preorderStart[0];
+BinaryTreeNode* ConstructCore(int *preorder_start, int *preorder_end, int *inorder_start, int *inorder_end) {
+	int root_value = preorder_start[0];
 	BinaryTreeNode *root = (BinaryTreeNode *)malloc(sizeof(BinaryTreeNode));
 	root->value = root_value;
 	root->left = root->right = NULL;
 
-	if(preorderStart == preorderEnd) {
-		if(inorderStart == inorderEnd && *preorderStart == *inorderStart) {
+	if(preorder_start == preorder_end) {
+		if(inorder_start == inorder_end && *preorder_start == *inorder_start) {
 			return root;
 		}
 		else
 			return NULL;
 	}
 
-	int *inorder_root = inorderStart;
-	while (inorder_root <= inorderEnd && *inorder_root != root_value) {
+	int *inorder_root = inorder_start;
+	while (inorder_root <= inorder_end && *inorder_root != root_value) {
 		++inorder_root;
 	}
 
-	if(inorder_root == inorderEnd && *inorder_root != root_value) {
+	if(inorder_root == inorder_end && *inorder_root != root_value) {
 		return NULL;
 	}
 
-	int left_len = inorder_root - inorderStart;
-	int *left_preorder_end = preorderStart + left_len;
+	int left_len = inorder_root - inorder_start;
+	int *left_preorder_end = preorder_start + left_len;
 	if(left_len > 0) {
-		root->left = ConstructCore(preorderStart + 1, left_preorder_end, inorderStart, inorder_root - 1);
+		root->left = ConstructCore(preorder_start + 1, left_preorder_end, inorder_start, inorder_root - 1);
 	}
-	if (left_len < preorderEnd - preorderStart) {
-		root->right = ConstructCore(left_preorder_end + 1, preorderEnd, inorder_root + 1, inorderEnd);
+	if (left_len < preorder_end - preorder_start) {
+		root->right = ConstructCore(left_preorder_end + 1, preorder_end, inorder_root + 1, inorder_end);
 	}
 
 	return root;
