@@ -45,9 +45,10 @@ void BFS(BinaryTreeNode *root) {
 				queue_enqueue(q, top->right);
 		}
 	}
-
+	queue_delete(q);
 }
 
+// TODO: stack
 void DFS(BinaryTreeNode *root) {
 	if(root == NULL)
 		return;
