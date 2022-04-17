@@ -9,7 +9,7 @@ int partition(int *data, int length, int l, int r) {
 		assert(data);
 	}
 	int index = ranom_in_range(l, r);
-	swap(data[l], data[r]);
+	swap(data[index], data[r]);
 
 	int small = l - 1;
 	for(int i = l; i < r; ++i) {
