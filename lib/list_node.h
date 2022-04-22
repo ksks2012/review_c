@@ -19,5 +19,7 @@ ListNode* node_new(void *);
 ListNode* array_to_list(int *, int);
 void print_list(const ListNode *);
 
+void push_front(ListNode **, void *);
+void push_back(ListNode **, void *);
 
 #endif

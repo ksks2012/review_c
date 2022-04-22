@@ -3,14 +3,14 @@
 #include "list_node.h"
 
 ListNode* node_new(void* value) {
-	ListNode *head = (ListNode *)malloc(sizeof(ListNode));
-	if(head == NULL)
+	ListNode *new_node = (ListNode *)malloc(sizeof(ListNode));
+	if(new_node == NULL)
 		return NULL;
-	head->next = NULL;
-	head->prev = NULL;
-	head->value = value;
+	new_node->next = NULL;
+	new_node->prev = NULL;
+	new_node->value = value;
 
-	return head;
+	return new_node;
 }
 
 
@@ -19,17 +19,10 @@ ListNode* array_to_list(int *arr, int size) {
 	if(arr == NULL || size <= 0) {
 		return NULL;
 	}
-	ListNode *head = (ListNode *)malloc(sizeof(ListNode));
-	head->value = arr[0];
-
-	ListNode *ptr = head;
-	for(int i = 1; i < size; i++) {
-		ListNode *new_node = (ListNode *)malloc(sizeof(ListNode));
-		new_node->value = arr[i];
-		ptr->next = new_node;
-		ptr = ptr->next;
+	ListNode *head = NULL;
+	for(int i = 0; i < size; i++) {
+		push_back(&head, arr[i]);
 	}
-
 	return head;
 }
 
@@ -43,3 +36,32 @@ void print_list(const ListNode *head) {
 	}
 	printf("NULL\n");
 }
+
+// add node to front
+void push_front(ListNode **head, void *input) {
+	ListNode *new_node = node_new(input);
+	if(*head == NULL) {
+		*head = new_node;
+		return;
+	}
+	new_node->next = *head;
+	(*head)->prev = new_node;
+	*head = new_node;
+	return;
+}
+
+// add node to back
+void push_back(ListNode **head, void *input) {
+	ListNode **indirect = head;
+	ListNode *new_node = node_new(input);
+	while (*indirect)
+	{
+		indirect = &((*indirect)->next);
+	}
+	*indirect = new_node;
+	new_node->prev = *indirect;
+}
+
+// TODO: first node
+// TODO: remove node
+// TODO: rotate list
