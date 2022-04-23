@@ -63,5 +63,23 @@ void push_back(ListNode **head, void *input) {
 }
 
 // TODO: first node
+
+// add node on front
+void pop_front(ListNode **head) {
+	ListNode *tmp = *head;
+	if(*head) {
+		(*head) = ((*head)->next);
+	}
+	if(*head) {
+		(*head)->prev = NULL;
+	}
+	free(tmp);
+}
+
+// add node on back
+void pop_back(ListNode **head) {
+
+}
+
 // TODO: remove node
 // TODO: rotate list

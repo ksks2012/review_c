@@ -21,5 +21,7 @@ void print_list(const ListNode *);
 
 void push_front(ListNode **, void *);
 void push_back(ListNode **, void *);
+void pop_front(ListNode **);
+void pop_back(ListNode **);
 
 #endif
