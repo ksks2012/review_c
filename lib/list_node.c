@@ -37,6 +37,27 @@ void print_list(const ListNode *head) {
 	printf("NULL\n");
 }
 
+ListNode* reverse_linking_list(ListNode *head) {
+	ListNode *new = NULL;
+	ListNode *ptr = head;
+
+	if(head == NULL)
+		return NULL;
+
+	while(ptr) {
+		ListNode *new_node = node_new(ptr->value);
+		if(new == NULL)
+			new = new_node;
+		else {
+			new_node->next = new;
+			new = new_node;
+		}
+		ptr = ptr->next;
+	}
+
+	return new;
+}
+
 // add node to front
 void push_front(ListNode **head, void *input) {
 	ListNode *new_node = node_new(input);

@@ -18,6 +18,7 @@ typedef struct ListNode
 ListNode* node_new(void *);
 ListNode* array_to_list(int *, int);
 void print_list(const ListNode *);
+ListNode *reverse_linking_list(ListNode*);
 
 void push_front(ListNode **, void *);
 void push_back(ListNode **, void *);
