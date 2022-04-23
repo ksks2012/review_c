@@ -39,13 +39,11 @@ void print_list(const ListNode *head) {
 
 ListNode* reverse_linking_list(ListNode *head) {
 	ListNode *new = NULL;
-	ListNode *ptr = head;
+	ListNode *ptr = node_new(NULL);
+	ptr->next = head;
 
-	if(head == NULL)
-		return NULL;
-
-	while(ptr) {
-		ListNode *new_node = node_new(ptr->value);
+	while(ptr->next) {
+		ListNode *new_node = node_new(ptr->next->value);
 		if(new == NULL)
 			new = new_node;
 		else {
