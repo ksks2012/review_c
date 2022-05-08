@@ -47,3 +47,25 @@ void bubble_sort(int arr[], int len)
 		}
 	}
 }
+
+void merge_sort(int *nums, int left, int right, int *tmp) {
+	if (left + 1 >= right) {
+		return;
+	}
+	// divide
+	int mid = left + (right - left) / 2;
+	merge_sort(nums, left, mid, tmp);
+	merge_sort(nums, mid, right, tmp);
+	// conquer
+	int p = left, q = mid, i = left;
+	while (p < mid || q < right) {
+		if (q >= right || (p < mid && nums[p] <= nums[q])) {
+			tmp[i++] = nums[p++];
+		} else {
+			tmp[i++] = nums[q++];
+		}
+	}
+	for (i = left; i < right; ++i) {
+		nums[i] = tmp[i];
+	}
+}

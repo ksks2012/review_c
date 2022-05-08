@@ -9,8 +9,8 @@
 
 void quick_sort(int *, int, int, int);
 void bubble_sort(int *, int);
+void merge_sort(int *, int, int, int *);
 // TODO:
-// void merge_sort(void *v, int left, int right);
 // void counting_sort(void *v, int k);
 
 #endif
