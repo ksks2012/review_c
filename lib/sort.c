@@ -39,10 +39,13 @@ void quick_sort(int *nums, int length, int l, int r) {
 void bubble_sort(int arr[], int len)
 {
 	int i, j, temp;
-	for (i = 0; i < len - 1; ++i) {
+	bool flag = true;
+	for (i = 0; i < len - 1 && flag; ++i) {
+		flag = false;
 		for (j = 0; j < len - 1 - i; ++j) {
 			if (arr[j] > arr[j + 1]) {
 				swap(arr[j], arr[j+1]);
+				flag = true;
 			}
 		}
 	}
