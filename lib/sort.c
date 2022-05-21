@@ -1,4 +1,5 @@
 #include "sort.h"
+#include <stdio.h>
 
 int ranom_in_range(int min, int max) {
 	return rand() % (max - min + 1) + min;
@@ -71,4 +72,42 @@ void merge_sort(int *nums, int left, int right, int *tmp) {
 	for (i = left; i < right; ++i) {
 		nums[i] = tmp[i];
 	}
+}
+
+ListNode* list_insertion_sort(ListNode *start) {
+	if (!start || !start->next)
+		return start;
+	ListNode *left = start;
+	ListNode *right = left->next;
+	left->next = NULL; // sub linking list
+
+	printf("left: ");
+	print_list(left);
+	printf("right: ");
+	print_list(right);
+
+	left = list_insertion_sort(left);
+	right = list_insertion_sort(right);
+
+	for (ListNode *merge = NULL; left || right; ) {
+		if (!right || (left && left->value < right->value)) {
+			if (!merge) {
+				start = merge = left; // init merge, start = left
+			} else {
+				// insert
+				merge->next = left;
+				merge = merge->next;
+			}
+			left = left->next; // left = NULL, finish loop
+		} else {
+			if (!merge) {
+				start = merge = right; // init merge, start = right
+			} else {
+				merge->next = right;
+				merge = merge->next;
+			}
+			right = right->next;
+		}
+	}
+	return start;
 }

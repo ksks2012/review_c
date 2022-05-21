@@ -5,6 +5,7 @@ typedef enum bool {
 	false,
 	true
 } bool;
+#define BOOL
 
 typedef struct ListNode
 {
