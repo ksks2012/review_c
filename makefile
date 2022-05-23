@@ -1,37 +1,10 @@
-CFLAGS = -pg
+CFLAGS = -O0 -g -Wall
 
 LIB = $(wildcard lib/*.c)
 all: 5_3.out
 # 3.out 4.out 5.out 5_1.out 5_2.out 5_3.out 6.out 7.out 7_1.out
 
-8.out: 8.c $(LIB:%.c=%.o)
-	gcc -o $@ $(CFLAGS) $^
-
-7_1.out: 7_1.c $(LIB:%.c=%.o)
-	gcc -o $@ $(CFLAGS) $^
-
-7.out: 7.c $(LIB:%.c=%.o)
-	gcc -o $@ $(CFLAGS) $^
-
-6.out: 6.c $(LIB:%.c=%.o)
-	gcc -o $@ $(CFLAGS) $^
-
-5_1.out: 5_1.c $(LIB:%.c=%.o)
-	gcc -o $@ $(CFLAGS) $^
-
-5_2.out: 5_2.c $(LIB:%.c=%.o)
-	gcc -o $@ $(CFLAGS) $^
-
-5_3.out: 5_3.c $(LIB:%.c=%.o)
-	gcc -o $@ $(CFLAGS) $^
-
-5.out: 5.c $(LIB:%.c=%.o)
-	gcc -o $@ $(CFLAGS) $^
-
-4.out: 4.c $(LIB:%.c=%.o)
-	gcc -o $@ $(CFLAGS) $^
-
-3.out: 3.c $(LIB:%.c=%.o)
+%.out: %.c $(LIB:%.c=%.o)
 	gcc -o $@ $(CFLAGS) $^
 
 clean:

@@ -1,3 +1,4 @@
+#include "circular_list.h"
 #include "sort.h"
 #include <stdio.h>
 
@@ -79,7 +80,7 @@ ListNode* list_insertion_sort(ListNode *start) {
 		return start;
 	ListNode *left = start;
 	ListNode *right = left->next;
-	left->next = NULL; // sub linking list
+	left->next = NULL; // sub linking ListNode
 
 	printf("left: ");
 	print_list(left);
@@ -105,6 +106,58 @@ ListNode* list_insertion_sort(ListNode *start) {
 			} else {
 				merge->next = right;
 				merge = merge->next;
+			}
+			right = right->next;
+		}
+	}
+	return start;
+}
+
+ListNode* circular_list_insertion_sort(ListNode *start) {
+	if (!start || start->next == start)
+		return start;
+	ListNode *left = start;
+	ListNode *right = left->next;
+
+	left->next = left;
+	left->prev->next = right;
+	right->prev = left->prev;
+	left->prev = left;
+
+	printf("left: ");
+	print_circular_list(left);
+	printf("right: ");
+	print_circular_list(right);
+
+	left = circular_list_insertion_sort(left);
+	right = circular_list_insertion_sort(right);
+
+	for (ListNode *merge = NULL; left || right != start;) {
+		if (right == start || (left && left->value < right->value)) {
+			if (!merge) {
+				start = merge = left; // init merge, start = left
+			} else {
+				// insert
+				left->prev = merge;
+                left->next = merge->next;
+                merge->next = left;
+                left->next->prev = left;
+
+				merge = merge->next;
+			}
+			left = NULL; // left = NULL, finish loop
+		} else {
+			if (!merge) {
+				start = merge = right; // init merge, start = right
+			} else {
+				// when merge points to the left element
+				if (merge == merge->next) {
+					merge->next = right;
+                    merge->prev = right->prev;
+                    right->prev->next = merge;
+                    right->prev = merge;
+				}
+                merge = merge->next;
 			}
 			right = right->next;
 		}

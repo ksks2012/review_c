@@ -23,5 +23,6 @@ void merge_sort(int *, int, int, int *);
 // void counting_sort(void *v, int k);
 
 ListNode* list_insertion_sort(ListNode *);
+ListNode* circular_list_insertion_sort(ListNode *);
 
 #endif

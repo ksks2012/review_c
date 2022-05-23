@@ -9,4 +9,6 @@ void circular_push_front(ListNode **, void *);
 void circular_push_back(ListNode **, void *);
 void circular_insert_after(ListNode **, void *, void *);
 
+void list_free(ListNode **);
+
 #endif

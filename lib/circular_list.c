@@ -1,4 +1,6 @@
 #include "circular_list.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 void print_circular_list(const ListNode *head) {
 	ListNode *tmp = head;
@@ -61,4 +63,17 @@ void circular_insert_after(ListNode **head, void *input, void *value_after) {
 	new_node->prev = tmp;
 	new_node->next = next_node;
 	next_node->prev = new_node;
+}
+
+void list_free(ListNode **head) {
+	ListNode *tmp = *head;
+	ListNode *ptr = *head;
+	tmp->prev->next = NULL;
+	tmp->prev = NULL;
+
+	while(!ptr) {
+		tmp = ptr;
+		ptr = ptr->next;
+		free(tmp);
+	}
 }

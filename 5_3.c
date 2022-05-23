@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "./lib/sort.h"
 #include "./lib/circular_list.h"
 
 int main() {
@@ -11,5 +12,8 @@ int main() {
 	circular_insert_after(&head, 64, 52);
     print_circular_list(head);
 
-    return 0;
+	ListNode *new = circular_list_insertion_sort(head);
+	print_circular_list(new);
+	list_free(&head);
+	return 0;
 }
