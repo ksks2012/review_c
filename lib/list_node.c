@@ -8,8 +8,7 @@ ListNode* node_new(void* value) {
 		return NULL;
 	new_node->next = NULL;
 	new_node->prev = NULL;
-	new_node->value = value;
-
+	new_node->value = (typeof(value))value;
 	return new_node;
 }
 
