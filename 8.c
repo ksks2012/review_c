@@ -47,6 +47,7 @@ int min_number(int *numbers, int length) {
 int main() {
 	int numbers[5] = {3, 4, 5, 1, 2};
 	int numbers2[5] = {1, 1, 1, 0, 1};
+	printf("%d\n", min_number(numbers, 5));
 	printf("%d\n", min_number(numbers2, 5));
 
 	return 0;
