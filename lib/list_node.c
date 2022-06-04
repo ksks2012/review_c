@@ -3,7 +3,7 @@
 #include <time.h>
 #include "list_node.h"
 
-ListNode* node_new(void* value) {
+inline ListNode* node_new(void* value) {
 	ListNode *new_node = (ListNode *)malloc(sizeof(ListNode));
 	if(new_node == NULL)
 		return NULL;
@@ -154,12 +154,12 @@ void pop_back(ListNode **head) {
 
 }
 
-void list_add_node(ListNode **list, ListNode *new_node) {
+inline  void list_add_node(ListNode **list, ListNode *new_node) {
     new_node->next = *list;
     *list = new_node;
 }
 
-void list_concat(ListNode **left, ListNode *right) {
+inline void list_concat(ListNode **left, ListNode *right) {
     while (*left)
         left = &((*left)->next);
     *left = right;
