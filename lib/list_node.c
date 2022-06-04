@@ -36,23 +36,18 @@ void print_list(const ListNode *head) {
 	printf("NULL\n");
 }
 
-ListNode* reverse_linking_list(ListNode *head) {
-	ListNode *new = NULL;
-	ListNode *ptr = node_new(NULL);
-	ptr->next = head;
+void reverse_linking_list(ListNode **head) {
+	ListNode *prev = NULL;
+	ListNode *ptr = (*head)->next;
 
-	while(ptr->next) {
-		ListNode *new_node = node_new(ptr->next->value);
-		if(new == NULL)
-			new = new_node;
-		else {
-			new_node->next = new;
-			new = new_node;
-		}
+	(*head)->next = prev;
+	while (ptr)
+	{
+		prev = (*head);
+		*head = ptr;
 		ptr = ptr->next;
+		(*head)->next = prev;
 	}
-
-	return new;
 }
 
 void swap_pair(ListNode **head)

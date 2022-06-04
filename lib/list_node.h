@@ -21,7 +21,7 @@ typedef struct ListNode
 ListNode* node_new(void *);
 ListNode* array_to_list(int *, int);
 void print_list(const ListNode *);
-ListNode *reverse_linking_list(ListNode*);
+void reverse_linking_list(ListNode**);
 void swap_pair(ListNode **);
 void delete_linking_list(ListNode **);
 
