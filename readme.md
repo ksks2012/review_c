@@ -16,6 +16,7 @@ make [clean] [all]
 | 5_1.c  | process of double linking list |
 | 5_2.c  | insertion sort in linking list |
 | 5_3.c  | insertion sort in circular linking list |
+| 5_4.c  | swap & shuffle method |
 | 6.c    | binary tree |
 | 7.c    | implement queue with two stack |
 | 7_1.c  | quick sort |
