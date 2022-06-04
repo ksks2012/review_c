@@ -7,6 +7,9 @@ int main() {
 	
     swap_pair(&head);
 	print_list(head);
+
+	fisher_yates_shuffle(&head);
+	print_list(head);
 	
 	delete_linking_list(&head);
 }

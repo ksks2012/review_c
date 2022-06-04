@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "list_node.h"
 
 ListNode* node_new(void* value) {
@@ -67,6 +68,46 @@ void delete_linking_list(ListNode **head) {
 		free(*head);
 		*head = next;
 	}
+}
+
+void fisher_yates_shuffle(ListNode **head) {
+	srand(time(NULL));
+	int count = 0;
+	ListNode **indirect = head;
+	while (*indirect)
+	{
+		indirect = &((*indirect)->next);
+		count++;
+	}
+
+	ListNode *new = NULL;
+	ListNode **new_head = &new;
+	ListNode **new_tail = &new;
+
+	while (count)
+	{
+		int random = rand() % count;
+        indirect = head;
+
+        while (random--)
+            indirect = &(*indirect)->next;
+
+        ListNode *tmp = *indirect;
+        *indirect = (*indirect)->next;
+
+        tmp->next = NULL;
+		// TODO:
+        if (new) {
+            (*new_tail)->next = tmp;
+            new_tail = &(*new_tail)->next;
+        } else 
+            new = tmp; 
+
+        count--;
+	}
+	
+
+	*head = *new_head;
 }
 
 // add node to front

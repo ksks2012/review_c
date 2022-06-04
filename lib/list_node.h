@@ -25,6 +25,8 @@ void reverse_linking_list(ListNode**);
 void swap_pair(ListNode **);
 void delete_linking_list(ListNode **);
 
+void fisher_yates_shuffle(ListNode **);
+
 void push_front(ListNode **, void *);
 void push_back(ListNode **, void *);
 void pop_front(ListNode **);
