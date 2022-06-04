@@ -12,4 +12,5 @@ int main() {
 		pop_front(&head);
 	}
 	print_list(head);
+	delete_linking_list(head);
 }

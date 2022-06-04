@@ -10,4 +10,6 @@ int main() {
 	print_list(head);
 	ListNode *new = list_insertion_sort(head);
 	print_list(new);
+	delete_linking_list(head)
+	delete_linking_list(new)
 }

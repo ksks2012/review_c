@@ -55,6 +55,25 @@ ListNode* reverse_linking_list(ListNode *head) {
 	return new;
 }
 
+void swap_pair(ListNode **head)
+{
+	for (; *head && (*head)->next; head = &((*head)->next->next)) {
+		ListNode *tmp = *head;
+		*head = (*head)->next;
+		tmp->next = (*head)->next;
+		(*head)->next = tmp;
+	}
+}
+
+// free linking list
+void delete_linking_list(ListNode **head) {
+	while (*head) {
+		ListNode *next = (*head)->next;
+		free(*head);
+		*head = next;
+	}
+}
+
 // add node to front
 void push_front(ListNode **head, void *input) {
 	ListNode *new_node = node_new(input);
@@ -82,7 +101,7 @@ void push_back(ListNode **head, void *input) {
 
 // TODO: first node
 
-// add node on front
+// pop node on front
 void pop_front(ListNode **head) {
 	ListNode *tmp = *head;
 	if(*head) {
@@ -94,7 +113,7 @@ void pop_front(ListNode **head) {
 	free(tmp);
 }
 
-// add node on back
+// pop node on back
 void pop_back(ListNode **head) {
 
 }
