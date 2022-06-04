@@ -154,5 +154,15 @@ void pop_back(ListNode **head) {
 
 }
 
+void list_add_node(ListNode **list, ListNode *new_node) {
+    new_node->next = *list;
+    *list = new_node;
+}
+
+void list_concat(ListNode **left, ListNode *right) {
+    while (*left)
+        left = &((*left)->next);
+    *left = right;
+}
 // TODO: remove node
 // TODO: rotate list

@@ -75,6 +75,35 @@ void merge_sort(int *nums, int left, int right, int *tmp) {
 	}
 }
 
+/*
+ * https://hackmd.io/@sysprog/linux2021-quiz1
+ */
+void list_quick_sort(ListNode **start) {
+	if (!*start)
+		return;
+
+	ListNode *pivot = *start;
+	int value = pivot->value;
+	ListNode *p = pivot->next;
+	pivot->next = NULL;
+
+	ListNode *left = NULL, *right = NULL;
+	while (p) {
+		ListNode *n = p;
+		p = p->next;
+		list_add_node(n->value > value ? &(right) : &(left), n);
+	}
+	list_quick_sort(&left);
+	list_quick_sort(&right);
+
+	ListNode *result = NULL;
+	list_concat(&result, left);
+	list_concat(&result, pivot);
+	list_concat(&result, right); 
+
+	*start = result;
+}
+
 ListNode* list_insertion_sort(ListNode *start) {
 	if (!start || !start->next)
 		return start;
@@ -139,9 +168,9 @@ ListNode* circular_list_insertion_sort(ListNode *start) {
 			} else {
 				// insert
 				left->prev = merge;
-                left->next = merge->next;
-                merge->next = left;
-                left->next->prev = left;
+				left->next = merge->next;
+				merge->next = left;
+				left->next->prev = left;
 
 				merge = merge->next;
 			}
@@ -153,11 +182,11 @@ ListNode* circular_list_insertion_sort(ListNode *start) {
 				// when merge points to the left element
 				if (merge == merge->next) {
 					merge->next = right;
-                    merge->prev = right->prev;
-                    right->prev->next = merge;
-                    right->prev = merge;
+					merge->prev = right->prev;
+					right->prev->next = merge;
+					right->prev = merge;
 				}
-                merge = merge->next;
+				merge = merge->next;
 			}
 			right = right->next;
 		}

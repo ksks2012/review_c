@@ -32,4 +32,7 @@ void push_back(ListNode **, void *);
 void pop_front(ListNode **);
 void pop_back(ListNode **);
 
+void list_add_node(ListNode **, ListNode *);
+void list_concat(ListNode **, ListNode *);
+
 #endif
