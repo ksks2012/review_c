@@ -4,7 +4,7 @@
 
 #include "./ks_random.h"
 
-inline int linear_congruential_generator() {
+int linear_congruential_generator() {
 	int value;
 	//Use a linear congruential generator (LCG) to update the state of the PRNG
 	prngState *= 1103515245;
@@ -25,8 +25,7 @@ inline int linear_congruential_generator() {
 	return value;
 }
 
-int init_rand(int seed)
-{
+int init_rand(int seed) {
 	//Seed the pseudo-random number generator
 	prngState += seed;
 
@@ -36,8 +35,7 @@ int init_rand(int seed)
 	return true;
 }
 
-inline int rand_range(int min, int max)
-{
+int rand_range(int min, int max) {
 	int value;
 
 	//Valid parameters?

@@ -13,8 +13,8 @@ static int prngState = 0;
 static int (*_rand)();
 
 int init_rand(int);
-extern inline int linear_congruential_generator();
-extern inline rand_range(int , int );
+int linear_congruential_generator();
+int rand_range(int , int );
 
 
 
