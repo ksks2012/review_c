@@ -6,6 +6,7 @@
 #include <time.h>
 #include "lib/sort.h"
 #include "lib/list_node.h"
+#include "lib/ks_random.h"
 
 static bool list_is_ordered(ListNode *list) {
     bool first = true;
@@ -37,9 +38,13 @@ int main(int argc, char **argv) {
     ListNode *list = NULL;
     int array[100] = {0};
     int count = 100;
-    while (count--)
-        array[count] = random() % 1024;
+
+    init_rand(time(NULL));
+    while (count--) {
+         // array[count] = random() % 1024;
+        array[count] = rand_range(0, 1024);
         // push_front(list, (void *)(random() % 1024));
+    }
 
     list = array_to_list(array, 5);
 

@@ -1,4 +1,4 @@
-CFLAGS = -O0 -g -Wall
+CFLAGS = -O2 -g -Wall -Wno-unused-variable
 
 LIB = $(wildcard lib/*.c)
 all: ${target}.out
