@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <time.h>
 #include "lib/ks_random.h"
 

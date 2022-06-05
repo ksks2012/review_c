@@ -21,7 +21,7 @@ ListNode* array_to_list(int *arr, int size) {
 	}
 	ListNode *head = NULL;
 	for(int i = 0; i < size; i++) {
-		push_back(&head, arr[i]);
+		push_back(&head, &(arr[i]));
 	}
 	return head;
 }
@@ -31,7 +31,7 @@ void print_list(const ListNode *head) {
 	while (ptr)
 	{
 		/* code */
-		printf("%d -> ", ptr->value);
+		printf("%d -> ", *((int *)(ptr->value)));
 		ptr = ptr->next;
 	}
 	printf("NULL\n");
@@ -154,7 +154,7 @@ void pop_back(ListNode **head) {
 
 }
 
-inline  void list_add_node(ListNode **list, ListNode *new_node) {
+inline void list_add_node(ListNode **list, ListNode *new_node) {
     new_node->next = *list;
     *list = new_node;
 }

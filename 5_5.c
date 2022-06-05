@@ -13,12 +13,12 @@ static bool list_is_ordered(ListNode *list) {
     int value;
     while (list) {
         if (first) {
-            value = list->value;
+            value = *((int *)(list->value));
             first = false;
         } else {
-            if (list->value < value)
+            if (*((int *)(list->value)) < value)
                 return false;
-            value = list->value;
+            value = *((int *)(list->value));
         }
         list = list->next;
     }
@@ -28,7 +28,7 @@ static bool list_is_ordered(ListNode *list) {
 static void list_display(ListNode *list) {
     printf("%s IN ORDER : ", list_is_ordered(list) ? "   " : "NOT");
     while (list) {
-        printf("%d ", list->value);
+        printf("%d ", *((int *)(list->value)));
         list = list->next;
     }
     printf("\n");
@@ -41,9 +41,7 @@ int main(int argc, char **argv) {
 
     init_rand(time(NULL));
     while (count--) {
-         // array[count] = random() % 1024;
         array[count] = rand_range(0, 1024);
-        // push_front(list, (void *)(random() % 1024));
     }
 
     list = array_to_list(array, 5);
