@@ -154,6 +154,34 @@ void pop_back(ListNode **head) {
 
 }
 
+void insert_nth_last(ListNode **head, void *input, int n) {
+	/*
+		insert the node to list in n-th position from last
+		if n > length of node then push in front
+	*/
+	ListNode **fast_ptr = head;
+	ListNode **slow_ptr = head;
+	ListNode *new_node = node_new(input);
+
+	for(int i = 0; i < n; i++) {
+		if (*fast_ptr == NULL) {
+			push_front(head, input);
+			return;
+		}
+		fast_ptr = &((*fast_ptr)->next);
+	}
+
+	while(*fast_ptr) {
+		fast_ptr = &((*fast_ptr)->next);
+		slow_ptr = &((*slow_ptr)->next);
+	}
+	new_node->next = (*slow_ptr)->next;
+	(*slow_ptr)->next = new_node;
+	new_node->prev = (*slow_ptr);
+	new_node->next->prev = new_node;
+}
+
+
 inline void list_add_node(ListNode **list, ListNode *new_node) {
     new_node->next = *list;
     *list = new_node;

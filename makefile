@@ -1,4 +1,4 @@
-CFLAGS = -O2 -g -Wall -Wno-unused-variable
+CFLAGS = -O2 -g -Wall -Wno-unused-variable -fgnu89-inline
 
 LIB = $(wildcard lib/*.c)
 all: ${target}.out

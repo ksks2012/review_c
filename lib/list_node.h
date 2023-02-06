@@ -32,6 +32,8 @@ void push_back(ListNode **, void *);
 void pop_front(ListNode **);
 void pop_back(ListNode **);
 
+void insert_nth_last(ListNode **, void *, int);
+
 extern inline void list_add_node(ListNode **, ListNode *);
 extern inline void list_concat(ListNode **, ListNode *);
 
