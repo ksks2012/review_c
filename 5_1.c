@@ -5,12 +5,12 @@ int main() {
 	ListNode *head = array_to_list(input, 4);
 	print_list(head);
 	for(int i = 10; i < 15; i++) {
-		push_front(&head, i);
+		push_front(&head, &i);
 	}
 	print_list(head);
 	for(int i = 0; i < 5; i++) {
 		pop_front(&head);
 	}
 	print_list(head);
-	delete_linking_list(head);
+	delete_linking_list(&head);
 }
