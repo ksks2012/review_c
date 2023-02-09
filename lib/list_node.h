@@ -33,6 +33,7 @@ void pop_front(ListNode **);
 void pop_back(ListNode **);
 
 void insert_nth_last(ListNode **, void *, int);
+void remove_nth_node(ListNode **, int);
 
 extern inline void list_add_node(ListNode **, ListNode *);
 extern inline void list_concat(ListNode **, ListNode *);

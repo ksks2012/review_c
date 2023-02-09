@@ -181,6 +181,24 @@ void insert_nth_last(ListNode **head, void *input, int n) {
 	new_node->next->prev = new_node;
 }
 
+void remove_nth_node(ListNode **head, int n) {
+	ListNode **indirect = head;
+	
+	int count = 0;
+	while (*indirect && count < n - 1)
+	{
+		indirect = &((*indirect)->next);
+		count++;
+	}
+	// printf("%d ", *((int *)((*indirect)->value)));
+	ListNode **tmp = (*indirect)->next;
+	if(tmp == NULL) {
+		return;
+	}
+	(*indirect)->next = (*indirect)->next->next;
+	(*indirect)->prev = (*indirect);
+	free(tmp);
+}
 
 inline void list_add_node(ListNode **list, ListNode *new_node) {
     new_node->next = *list;

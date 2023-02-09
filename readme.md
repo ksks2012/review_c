@@ -18,7 +18,8 @@ make [clean] [all]
 | 5_3.c   | insertion sort in circular linking list |
 | 5_4.c   | swap & shuffle method |
 | 5_5.c   | quick sort in linking list |
-| 5_6.c   | insert value to n-th last in linking list |
+| 5_6.c   | insert value to n-th last in linking list (4/1500)|
+| 5_7.c   | remove node at n-th in linking list (5/1500)|
 | 6.c     | binary tree |
 | 7.c     | implement queue with two stack |
 | 7_1.c   | quick sort |
